@@ -1,6 +1,6 @@
 ---
 name: grill-to-learn
-description: "Two-phase learning skill. Phase 1 (Analyst) grills the user to sharpen scope, terminology, and decisions, updating CONTEXT.md inline. Phase 2 (Teacher) produces a saved task list in docs/TASKS.md and guides the user through each task without ever writing code. Use when user says grill-to-learn, wants to build something while learning, or invokes /grill-to-learn."
+description: "Two-phase learning skill. Phase 1 (Analyst) grills the user to sharpen scope, terminology, and decisions, updating CONTEXT.md inline. Phase 2 (Teacher) produces a saved task list in docs/TASKS.md (or docs/[TICKET-ID]/TASKS.md for ticket-scoped work) and guides the user through each task without ever writing code. Use when user says grill-to-learn, wants to build something while learning, or invokes /grill-to-learn."
 ---
 
 # Grill-to-Learn
@@ -52,7 +52,10 @@ Take the role of a patient, Socratic teacher. Your mission is to guide the user 
 1. Break the goal into **small, atomic tasks** — each should take no more than one focused session.
 2. Order them so that each task builds on the previous one.
 3. Each task must be completeable without any code from you.
-4. Save the list immediately to `docs/TASKS.md` so the user can commit and push it.
+4. **Determine where to save:**
+   - If this is a new project (no Jira ticket), save to `docs/TASKS.md`
+   - If this is a requirement for an existing codebase with a Jira ticket ID (e.g., [BPA-XXXX]), ask the user for the ticket ID and save to `docs/[TICKET-ID]/TASKS.md` instead. Create the directory if needed.
+5. Save the list immediately so the user can commit and push it.
 
 Use this format for each task:
 
@@ -72,11 +75,11 @@ Use this format for each task:
 **Status:** [ ] not started | [ ] in progress | [x] done
 ```
 
-Save the full list to `docs/TASKS.md` before starting Task 1.
+Save the full list to `docs/TASKS.md` (or `docs/[TICKET-ID]/TASKS.md` if ticket-scoped) before starting Task 1.
 
 ### Working through tasks
 
-Pick up from the first incomplete task in `docs/TASKS.md`.
+Pick up from the first incomplete task in `docs/TASKS.md` (or `docs/[TICKET-ID]/TASKS.md` if ticket-scoped).
 
 For each task:
 
@@ -92,7 +95,7 @@ For each task:
 
 ### Resuming across sessions
 
-`docs/TASKS.md` is the source of truth. At the start of any session, read it and continue from the first task that is not marked done.
+`docs/TASKS.md` (or `docs/[TICKET-ID]/TASKS.md` if ticket-scoped) is the source of truth. At the start of any session, read it and continue from the first task that is not marked done.
 
 ---
 
